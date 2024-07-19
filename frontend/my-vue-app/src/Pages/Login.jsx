@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';  
+import url from '../link';
 
 const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
-
+  const URL = url
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/login', { username, password });
+      const response = await axios.post(`${URL}/login`, { username, password });
       localStorage.setItem('token', response.data.token);
       setToken(response.data.token);
       navigate('/tasks'); // Navigate to the tasks page

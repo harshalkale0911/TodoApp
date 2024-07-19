@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import TaskForm from './TaskForm';
 import Navbar from './Navbar';
+import url from '../link';
 
-const socket = io('http://localhost:5000', {
+const URL = url
+
+const socket = io(`${URL}`, {
   auth: {
     token: localStorage.getItem('token')
   }
